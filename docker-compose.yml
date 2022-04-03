@@ -1,0 +1,10 @@
+version: "3"
+services:
+  notebook:
+    build:
+      context: ./jupyter_lab_docker
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./project:/usr/src
+      #- ../project:/usr/src
