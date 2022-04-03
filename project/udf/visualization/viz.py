@@ -25,3 +25,18 @@ def viz_sensor(data, sensor="00"):
     ))
     fig.update_layout(title=sensor_name)
     return fig
+
+def viz_sensors(data, columns, nrows=10, ncols=5, w=22, h=20):
+    fig, axes = plt.subplots(nrows=nrows, ncols=ncols, 
+                             sharex=True, sharey=False, 
+                             figsize=(w, h))
+
+    axes = axes.ravel()
+
+    fig.tight_layout(rect=[0,0.03,1,0.95])
+    fig.suptitle(f"All Sensors", y=1)
+
+    for idx, column in enumerate(columns):
+        axes[idx].plot(data['timestamp'],data[column])
+        axes[idx].title.set_text(f"{column}")
+    return axes
