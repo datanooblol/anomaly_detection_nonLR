@@ -6,6 +6,10 @@ COPY conda_requirements.txt .
 
 RUN conda install -y --file conda_requirements.txt
 
+COPY pip_requirements.txt .
+
+RUN pip3 install -r pip_requirements.txt
+
 EXPOSE 8888
 
 WORKDIR /usr/src
